@@ -1,11 +1,11 @@
 name: Failing
 
-on: 
+on:
   workflow_dispatch:
 
 jobs:
   echo:
-    runs-on: ubuntu-latest
+    runs-on: java-k8s
     steps:
       - name: Fail
         run: exit 1

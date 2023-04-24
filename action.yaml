@@ -2,10 +2,10 @@ name: 'Workflow Dispatch and wait'
 description: 'Trigger and chain GitHub Actions workflows with workflow_dispatch events and wait for result'
 
 inputs:
-  workflow: 
+  workflow:
     description: 'Name or ID of workflow to run'
     required: true
-  token: 
+  token:
     description: 'GitHub token with repo write access, can NOT use secrets.GITHUB_TOKEN, see readme'
     required: true
   inputs:
@@ -34,7 +34,7 @@ inputs:
     required: false
     default: true
   wait-for-completion-timeout:
-    description: 'Maximum amount of time (+unit) to wait to mark workflow as timed out' 
+    description: 'Maximum amount of time (+unit) to wait to mark workflow as timed out'
     required: false
     default: 1h
   wait-for-completion-interval:
@@ -43,7 +43,7 @@ inputs:
     default: 1m
 
 runs:
-  using: 'node12'
+  using: 'node16'
   main: 'dist/index.js'
 
 branding:

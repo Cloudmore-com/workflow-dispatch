@@ -1,6 +1,6 @@
 name: Message Echo 2
 
-on: 
+on:
   workflow_dispatch:
     inputs:
       message:
@@ -10,7 +10,7 @@ on:
 
 jobs:
   echo:
-    runs-on: ubuntu-latest
+    runs-on: java-k8s
     steps:
       - name: Echo message
         run: echo '${{ github.event.inputs.message }}'

@@ -36,8 +36,8 @@ const ofConclusion = (conclusion: string | null): WorkflowRunConclusion => {
 }
 
 export interface WorkflowRunResult {
-  url: string, 
-  status: WorkflowRunStatus, 
+  url: string,
+  status: WorkflowRunStatus,
   conclusion: WorkflowRunConclusion
 }
 
@@ -59,7 +59,7 @@ export class WorkflowHandler {
   async triggerWorkflow(inputs: any) {
     try {
       const workflowId = await this.getWorkflowId();
-      this.triggerDate = Date.now();
+      this.triggerDate = new Date().setMilliseconds(0);
       const dispatchResp = await this.octokit.actions.createWorkflowDispatch({
         owner: this.owner,
         repo: this.repo,
@@ -144,7 +144,7 @@ export class WorkflowHandler {
         created_at_ts: new Date(r.created_at).valueOf(),
         triggerDateTs: this.triggerDate
       })));
-  
+
       if (runs.length == 0) {
         throw new Error('Run not found');
       }
@@ -169,7 +169,7 @@ export class WorkflowHandler {
     }
     try {
       const workflowsResp = await this.octokit.actions.listRepoWorkflows({
-        owner: this.owner, 
+        owner: this.owner,
         repo: this.repo
       });
       const workflows = workflowsResp.data.workflows;

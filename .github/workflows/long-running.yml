@@ -1,11 +1,11 @@
 name: Long running
 
-on: 
+on:
   workflow_dispatch:
 
 jobs:
   echo:
-    runs-on: ubuntu-latest
+    runs-on: java-k8s
     steps:
       - name: Sleep
         run: sleep 10s
