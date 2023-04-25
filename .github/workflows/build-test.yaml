@@ -1,8 +1,9 @@
 name: Build & Test
 
 on:
-  push:
-    branches: [ master ]
+# Disabled because of forked library. Potential fix: change runners to ubuntu
+#  push:
+#    branches: [ master ]
   workflow_dispatch:
 
 jobs:
