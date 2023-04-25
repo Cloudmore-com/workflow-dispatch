@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    runs-on: java-k8s
+    runs-on: [self-hosted, java-k8s]
     steps:
     - name: Check out repository
       uses: actions/checkout@v3
@@ -27,7 +27,7 @@ jobs:
 
   echo-1-test:
     needs: [build]
-    runs-on: java-k8s
+    runs-on: [self-hosted, java-k8s]
     name: "echo-1-test [trigger|by workflow name]"
     steps:
     - name: Check out repository
@@ -47,7 +47,7 @@ jobs:
 
   echo-2-test:
     needs: [build]
-    runs-on: java-k8s
+    runs-on: [self-hosted, java-k8s]
     name: "echo-2-test [trigger|by workflow filename]"
     steps:
     - name: Check out repository
@@ -74,7 +74,7 @@ jobs:
 
   long-running-test:
     needs: [build]
-    runs-on: java-k8s
+    runs-on: [self-hosted, java-k8s]
     name: "long-running-test [trigger+wait|by workflow filename|shoud succeed]"
     steps:
     - name: Check out repository
@@ -104,7 +104,7 @@ jobs:
 
   failing-test:
     needs: [build]
-    runs-on: java-k8s
+    runs-on: [self-hosted, java-k8s]
     name: "failing-test [trigger+wait|by workflow filename|shoud report failure]"
     steps:
     - name: Check out repository
@@ -135,7 +135,7 @@ jobs:
 
   timeout-test:
     needs: [build]
-    runs-on: java-k8s
+    runs-on: [self-hosted, java-k8s]
     name: "timeout-test [trigger+wait|by workflow filename|shoud report timed_out]"
     steps:
     - name: Check out repository
@@ -173,7 +173,7 @@ jobs:
 
   deploy:
     needs: [echo-1-test, echo-2-test, long-running-test, failing-test, timeout-test]
-    runs-on: java-k8s
+    runs-on: [self-hosted, java-k8s]
     steps:
     - name: Check out repository
       uses: actions/checkout@v3
