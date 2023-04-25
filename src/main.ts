@@ -6,7 +6,6 @@
 // ----------------------------------------------------------------------------
 
 import * as core from '@actions/core'
-import * as github from '@actions/github'
 import { formatDuration, getArgs, isTimedOut, sleep } from './utils';
 import { WorkflowHandler, WorkflowRunConclusion, WorkflowRunResult, WorkflowRunStatus } from './workflow-handler';
 
